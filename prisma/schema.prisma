@@ -13,8 +13,8 @@ model User {
   email         String?   @unique
   emailVerified DateTime?
   image         String?
-  password      String?   // 🔐 Tambahkan password
-  role          Role      @default(USER) // 🧑‍💼 Tambahkan role enum
+  password      String?   
+  role          Role      @default(USER) 
   accounts      Account[]
   sessions      Session[]
 }
@@ -67,13 +67,13 @@ model Campaign {
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
-  images          Image[]  // Relasi ke banyak gambar
+  images          Image[]  
 }
 
 model Image {
   id         String   @id @default(uuid())
   url        String
-  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade) // ⬅️ penting
+  campaign   Campaign @relation(fields: [campaignId], references: [id], onDelete: Cascade) 
   campaignId String
   createdAt  DateTime @default(now())
 }
